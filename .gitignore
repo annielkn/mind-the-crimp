@@ -1,0 +1,16 @@
+venv/
+.venv/
+.env
+# data/ is local runtime state, except the committed public snapshot
+data/*
+!data/public/
+__pycache__/
+*.pyc
+web/node_modules/
+web/dist/
+
+# private (never published)
+adapters/private/
+tools/private/
+config/*.private.json
+state.json

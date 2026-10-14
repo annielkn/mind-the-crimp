@@ -1,0 +1,277 @@
+{
+  "White City": {
+    "chain": "city-bouldering",
+    "area": "White City",
+    "address": "Ariel Way, Shepherd’s Bush, London",
+    "postcode": "W12 7HB",
+    "lat": 51.510103,
+    "lng": -0.221694,
+    "hours": {
+      "Mon": [
+        "10:00",
+        "22:30"
+      ],
+      "Tue": [
+        "10:00",
+        "22:30"
+      ],
+      "Wed": [
+        "10:00",
+        "22:30"
+      ],
+      "Thu": [
+        "10:00",
+        "22:30"
+      ],
+      "Fri": [
+        "10:00",
+        "22:30"
+      ],
+      "Sat": [
+        "09:00",
+        "21:00"
+      ],
+      "Sun": [
+        "09:00",
+        "21:00"
+      ]
+    },
+    "hours_source": "https://www.citybouldering.co.uk/locations/city-bouldering-stratford (footer)",
+    "source_url": "https://www.citybouldering.co.uk/locations/city-bouldering-stratford",
+    "verified": null
+  },
+  "Aldgate": {
+    "chain": "city-bouldering",
+    "area": "Aldgate",
+    "address": "33 Aldgate High Street, London",
+    "postcode": "EC3N 1AH",
+    "lat": 51.514134,
+    "lng": -0.075451,
+    "hours": {
+      "Mon": [
+        "06:30",
+        "23:00"
+      ],
+      "Tue": [
+        "06:30",
+        "23:00"
+      ],
+      "Wed": [
+        "06:30",
+        "23:00"
+      ],
+      "Thu": [
+        "06:30",
+        "23:00"
+      ],
+      "Fri": [
+        "06:30",
+        "23:00"
+      ],
+      "Sat": [
+        "09:00",
+        "22:00"
+      ],
+      "Sun": [
+        "09:00",
+        "22:00"
+      ]
+    },
+    "hours_source": "https://www.citybouldering.co.uk/locations/city-bouldering-stratford (footer)",
+    "source_url": "https://www.citybouldering.co.uk/locations/city-bouldering-stratford",
+    "verified": null
+  },
+  "Stratford": {
+    "chain": "city-bouldering",
+    "area": "Stratford",
+    "address": "234 High St, London",
+    "postcode": "E15 2JA",
+    "lat": 51.537245,
+    "lng": -0.003342,
+    "hours": {
+      "Mon": [
+        "10:00",
+        "22:30"
+      ],
+      "Tue": [
+        "07:00",
+        "22:30"
+      ],
+      "Wed": [
+        "07:00",
+        "22:30"
+      ],
+      "Thu": [
+        "07:00",
+        "22:30"
+      ],
+      "Fri": [
+        "10:00",
+        "22:30"
+      ],
+      "Sat": [
+        "09:00",
+        "21:00"
+      ],
+      "Sun": [
+        "09:00",
+        "21:00"
+      ]
+    },
+    "hours_source": "https://www.citybouldering.co.uk/locations/city-bouldering-stratford (footer)",
+    "source_url": "https://www.citybouldering.co.uk/locations/city-bouldering-stratford",
+    "verified": null
+  },
+  "Fulham": {
+    "chain": "city-bouldering",
+    "area": "Fulham",
+    "address": "5, Parsons Green Depot, 33-35 Parsons Green Lane, London",
+    "postcode": "SW6 4HH",
+    "lat": 51.476437,
+    "lng": -0.20002,
+    "hours": {
+      "Mon": [
+        "07:00",
+        "22:00"
+      ],
+      "Tue": [
+        "10:00",
+        "22:00"
+      ],
+      "Wed": [
+        "07:00",
+        "22:00"
+      ],
+      "Thu": [
+        "10:00",
+        "22:00"
+      ],
+      "Fri": [
+        "07:00",
+        "21:00"
+      ],
+      "Sat": [
+        "09:00",
+        "19:00"
+      ],
+      "Sun": [
+        "09:00",
+        "19:00"
+      ]
+    },
+    "hours_source": "https://www.citybouldering.co.uk/locations/city-bouldering-stratford (footer)",
+    "source_url": "https://www.citybouldering.co.uk/locations/city-bouldering-stratford",
+    "verified": null
+  },
+  "VauxWall East": {
+    "chain": "lcc",
+    "area": "Vauxhall",
+    "address": "1 Cabanel Place, Lollard Street, London",
+    "postcode": "SE11 6BD",
+    "lat": 51.492013,
+    "lng": -0.114789,
+    "hours": null,
+    "hours_source": null,
+    "source_url": "https://londonclimbingcentres.co.uk/centre/vauxeast/",
+    "verified": null
+  },
+  "EustonWall": {
+    "chain": "lcc",
+    "area": "Euston",
+    "address": "350 Euston Road, London",
+    "postcode": "NW1 3AX",
+    "lat": 51.524338,
+    "lng": -0.142155,
+    "hours": null,
+    "hours_source": null,
+    "source_url": "https://londonclimbingcentres.co.uk/centre/eustonwall/",
+    "verified": null
+  },
+  "VauxWall West": {
+    "chain": "lcc",
+    "area": "Vauxhall",
+    "address": "Arch 45b, 47a S Lambeth Rd, London",
+    "postcode": "SW8 1SR",
+    "lat": 51.485064,
+    "lng": -0.122824,
+    "hours": null,
+    "hours_source": null,
+    "source_url": "https://londonclimbingcentres.co.uk/centre/vauxwest/",
+    "verified": null
+  },
+  "BethWall Green": {
+    "chain": "lcc",
+    "area": "Bethnal Green",
+    "address": "243-247 Hollybush Place, London",
+    "postcode": "E2 9QX",
+    "lat": 51.527781,
+    "lng": -0.056667,
+    "hours": null,
+    "hours_source": null,
+    "source_url": "https://londonclimbingcentres.co.uk/centre/bethwall/",
+    "verified": null,
+    "aliases": [
+      "BethWall"
+    ]
+  },
+  "CanaryWall": {
+    "chain": "lcc",
+    "area": "Canary Wharf",
+    "address": "21-23 Trinidad St, Poplar, London",
+    "postcode": "E14 8AA",
+    "lat": 51.509694,
+    "lng": -0.027418,
+    "hours": null,
+    "hours_source": null,
+    "source_url": "https://londonclimbingcentres.co.uk/centre/canarywall/",
+    "verified": null
+  },
+  "RavensWall": {
+    "chain": "lcc",
+    "area": "Hammersmith",
+    "address": "Arch 105 Ravenscourt Road, London",
+    "postcode": "W6 0UQ",
+    "lat": 51.494352,
+    "lng": -0.236843,
+    "hours": null,
+    "hours_source": null,
+    "source_url": "https://londonclimbingcentres.co.uk/centre/ravenswall/",
+    "verified": null
+  },
+  "CroyWall": {
+    "chain": "lcc",
+    "area": "Croydon",
+    "address": "Unit 7, New South Quarter, Whitestone Way, Croydon",
+    "postcode": "CR0 4WN",
+    "lat": 51.374471,
+    "lng": -0.116072,
+    "hours": null,
+    "hours_source": null,
+    "source_url": "https://londonclimbingcentres.co.uk/centre/croywall/",
+    "verified": null
+  },
+  "HarroWall": {
+    "chain": "lcc",
+    "area": "Harrow",
+    "address": "Unit 2a & 3a Neptune Trading Estate, Neptune Rd, Harrow",
+    "postcode": "HA1 4HX",
+    "lat": 51.580593,
+    "lng": -0.346432,
+    "hours": null,
+    "hours_source": null,
+    "source_url": "https://londonclimbingcentres.co.uk/centre/harrowall/",
+    "verified": null
+  },
+  "Mile End": {
+    "chain": "mile-end",
+    "area": "Mile End",
+    "address": "Mile End Climbing Wall, Haverfield Road, London",
+    "postcode": "E3 5BE",
+    "lat": 51.527705,
+    "lng": -0.039672,
+    "hours": null,
+    "hours_source": null,
+    "source_url": "https://www.mileendwall.org.uk/index.php/contact-us",
+    "verified": null
+  }
+}

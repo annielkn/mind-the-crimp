@@ -1,0 +1,254 @@
+/* Self-hosted fonts (latin subsets, SIL OFL: see public/fonts/OFL-*.txt), so offline mode needs no network. */
+@font-face {
+  font-family: "Silkscreen";
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/silkscreen-400-latin.woff2") format("woff2");
+}
+@font-face {
+  font-family: "M PLUS Rounded 1c";
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/mplus-rounded-1c-400-latin.woff2") format("woff2");
+}
+@font-face {
+  font-family: "M PLUS Rounded 1c";
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/mplus-rounded-1c-700-latin.woff2") format("woff2");
+}
+
+/* Pastel / pixel theme. Every colour comes from these tokens.
+   --muted is for non-text bits only (disabled, placeholder): in light mode it is under 4.5:1. */
+:root {
+  --bg: #FFF5F7;
+  --card: #FFFFFF;
+  --ink: #3B2A33;
+  --muted: #8A7480;
+  --sakura: #F4A6B8;
+  --sakura-deep: #C2456A;
+  --mint: #BDE6D2;
+  --peach: #FFD3B5;
+  --lilac: #D9CCF2;
+  --pill-ink: #3B2A33; /* pills are always pastel, so their text stays dark in both modes */
+  --pixel: "Silkscreen", monospace;
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1F1A1E;
+    --card: #2A2228;
+    --ink: #F7E9EE;
+    --muted: #B39CA8;
+    --sakura-deep: #F7B9C8;
+  }
+}
+
+* { box-sizing: border-box; }
+
+/* Default cursor on html (not body) so empty space below short pages gets it too. */
+html { cursor: url("/sprites/crimp.png") 4 4, auto; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 15px/1.5 "M PLUS Rounded 1c", system-ui, sans-serif;
+}
+
+/* Clickable things get the crimp hand; hotspot 12 14 is where the fingertip meets the hold. */
+a[href], button, summary, select, label, [role="button"], .row, .chip {
+  cursor: url("/sprites/crimp_hand.png") 12 14, pointer;
+}
+.chip > input[type="text"] { cursor: text; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--sakura-deep); outline-offset: 2px; }
+
+main {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 28px 16px 64px;
+}
+
+/* Header */
+header { margin-bottom: 20px; }
+.brand { display: flex; align-items: center; gap: 12px; margin-bottom: 6px; }
+h1 { margin: 0; font-family: var(--pixel); font-weight: 400; font-size: 28px; line-height: 1.1; }
+h2 { margin: 0 0 8px; font-size: 18px; font-weight: 700; }
+.tagline { margin: 0 0 10px; font-size: 17px; }
+.error { color: var(--sakura-deep); font-weight: 700; }
+
+/* Sprites: hard pixel edges at whole-number sizes. */
+.sprite { display: block; image-rendering: pixelated; }
+
+/* Pills */
+.pill {
+  display: inline-block;
+  padding: 1px 10px;
+  border-radius: 999px;
+  color: var(--pill-ink);
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.pill.mint { background: var(--mint); }
+.pill.peach, .pill.low { background: var(--peach); }
+.pill.lilac { background: var(--lilac); }
+.pill.status { margin: 0; font-size: 13px; }
+
+/* Filters: one wrapping row of chips. */
+/* Equal-width columns, as many as fit: 4 on desktop, 1 on phones (two 10.5rem columns don't fit
+   in a phone's width, and narrower chips clip "18/10/2026" / "That day only"). */
+.filters {
+  --chip-min: 10.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, var(--chip-min)), 1fr));
+  gap: 10px;
+  margin-bottom: 18px;
+}
+/* Near holds two controls (postcode + distance), so it spans 2 columns once there are at least 2;
+   21rem + gap = room for two --chip-min columns. Spanning 2 in a 1-column grid would overflow. */
+@media (min-width: calc(21rem + 42px)) {
+  .filters > .near { grid-column: span 2; }
+}
+.chip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  height: 40px;
+  padding: 0 12px;
+  border: 2px solid var(--ink);
+  border-radius: 12px;
+  background: var(--card);
+  font-size: 14px;
+}
+.chip > span { font-weight: 700; white-space: nowrap; }
+/* Controls inside a chip: no native padding/box (Safari adds its own), so every label-to-value
+   gap is the chip's 8px and every value sits on the same line. */
+.chip > input, .chip > select {
+  min-width: 0;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+  color: var(--ink);
+  font: inherit;
+  line-height: normal;
+}
+/* One chevron for every select and the Area toggle, drawn in the current text colour. */
+.chip > select, .multi summary {
+  -webkit-appearance: none;
+  appearance: none;
+  padding-right: 18px;
+  background-image: linear-gradient(45deg, transparent 50%, currentColor 50%),
+    linear-gradient(135deg, currentColor 50%, transparent 50%);
+  background-position: calc(100% - 6px) 50%, calc(100% - 1px) 50%;
+  background-size: 5px 5px;
+  background-repeat: no-repeat;
+}
+/* Focus ring around the whole chip rather than a box inside it. */
+.chip > input:focus-visible, .chip > select:focus-visible, .multi summary:focus-visible { outline: none; }
+.chip:focus-within { outline: 2px solid var(--sakura-deep); outline-offset: 2px; }
+/* Controls fill the chip's remaining width; Near's distance select keeps its natural size. */
+.chip > input, .chip > select { flex: 1; width: 0; }
+.near > select { flex: none; width: auto; }
+.chip > select:disabled { color: var(--muted); cursor: url("/sprites/crimp.png") 4 4, auto; }
+.chip > input::placeholder { color: var(--muted); }
+.filters > .error { grid-column: 1 / -1; margin: 0; font-size: 13px; }
+
+/* Area multi-select: a chip whose <details> opens a checkbox list. */
+.multi-chip { position: relative; }
+.multi summary { display: block; list-style: none; white-space: nowrap; }
+.multi summary::-webkit-details-marker { display: none; }
+.multi-options {
+  position: absolute;
+  z-index: 10;
+  top: calc(100% + 6px);
+  right: -2px; /* opens back over the chip, so it never runs off the right edge */
+  min-width: 180px;
+  max-height: 260px;
+  overflow-y: auto;
+  padding: 8px 12px;
+  border: 2px solid var(--ink);
+  border-radius: 12px;
+  background: var(--card);
+  box-shadow: 4px 4px 0 var(--sakura);
+}
+.multi-options label { display: flex; gap: 8px; align-items: center; padding: 4px 0; white-space: nowrap; }
+.multi-options input[type="checkbox"] { margin: 0; accent-color: var(--sakura-deep); }
+
+/* Buttons: chunky pixel press. */
+.link-button {
+  margin-top: 6px;
+  padding: 2px 12px;
+  border: 2px solid var(--ink);
+  border-radius: 12px;
+  background: var(--card);
+  color: var(--ink);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  box-shadow: 4px 4px 0 var(--sakura);
+}
+.link-button:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--sakura); }
+
+.window { margin: 0 0 14px; font-size: 18px; }
+
+/* Day cards */
+.card {
+  background: var(--card);
+  border: 2px solid var(--ink);
+  border-radius: 16px;
+  box-shadow: 4px 4px 0 var(--sakura);
+  padding: 16px 18px;
+  margin-bottom: 18px;
+}
+.card h2 { margin-bottom: 6px; }
+
+/* Departure-board rows: [time] [gym] [chain pill + status] [price] */
+.row {
+  display: grid;
+  grid-template-columns: 8.5rem minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 12px;
+  margin: 0 -8px;
+  padding: 8px;
+  border-radius: 10px;
+  text-decoration: none;
+}
+.row + .row { border-top: 1px dashed var(--sakura); }
+a.row:hover { background: color-mix(in srgb, var(--sakura) 25%, transparent); }
+.time, .price { font-family: var(--pixel); color: var(--sakura-deep); font-size: 14px; white-space: nowrap; }
+.price { text-align: right; }
+.gym { font-weight: 700; overflow-wrap: anywhere; }
+.dist { font-weight: 400; }
+.meta { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; justify-content: flex-end; }
+.avail { font-size: 13px; white-space: nowrap; }
+.avail.full { color: var(--sakura-deep); font-weight: 700; }
+
+/* Phones: rows put time + price first, gym and pills underneath. */
+@media (max-width: 560px) {
+  .row {
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas: "time price" "gym gym" "meta meta";
+    row-gap: 2px;
+  }
+  .time { grid-area: time; }
+  .price { grid-area: price; }
+  .gym { grid-area: gym; }
+  .meta { grid-area: meta; justify-content: flex-start; }
+}
+
+/* Loader / empty state */
+.state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 32px 0;
+  text-align: center;
+}
+.state p { margin: 0; }

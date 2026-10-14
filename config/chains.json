@@ -1,0 +1,121 @@
+{
+  "city-bouldering": {
+    "name": "City Bouldering",
+    "source": "manual",
+    "type": "bookable",
+    "last_confirmed": "2026-10-14",
+    "rules": [
+      {
+        "centre": "Aldgate",
+        "day": "Mon",
+        "start": "08:00",
+        "end": "10:00",
+        "price": 7.5,
+        "label": "Bargain Climbing",
+        "conditions": [
+          "Pre-book online",
+          "Ages 16+",
+          "Shoe hire not included"
+        ],
+        "link": "https://www.citybouldering.co.uk/booking/bargain-climbing"
+      },
+      {
+        "centre": "Aldgate",
+        "day": "Sun",
+        "start": "16:30",
+        "end": "17:30",
+        "price": 7.5,
+        "label": "Bargain Climbing",
+        "conditions": [
+          "Pre-book online",
+          "Ages 16+",
+          "Shoe hire not included"
+        ],
+        "link": "https://www.citybouldering.co.uk/booking/bargain-climbing"
+      },
+      {
+        "centre": "Aldgate",
+        "day": "Sun",
+        "start": "18:00",
+        "end": "20:00",
+        "price": 7.5,
+        "label": "Bargain Climbing",
+        "conditions": [
+          "Pre-book online",
+          "Ages 16+",
+          "Shoe hire not included"
+        ],
+        "link": "https://www.citybouldering.co.uk/booking/bargain-climbing"
+      },
+      {
+        "centre": "Fulham",
+        "day": "Mon",
+        "start": "07:30",
+        "end": "16:30",
+        "price": 7.5,
+        "label": "Bargain Climbing",
+        "conditions": [
+          "Pre-book online",
+          "Ages 16+",
+          "Shoe hire not included",
+          "3-hour sessions, starting every hour"
+        ],
+        "link": "https://www.citybouldering.co.uk/booking/bargain-climbing---fulham"
+      },
+      {
+        "centre": "Stratford",
+        "day": "Wed",
+        "start": "09:00",
+        "end": "15:00",
+        "price": 7.5,
+        "label": "Bargain Climbing",
+        "conditions": [
+          "Pre-book online",
+          "Ages 16+"
+        ],
+        "link": "https://www.citybouldering.co.uk/booking/bargain-climbing---stratford-wednesdays"
+      },
+      {
+        "centre": "White City",
+        "day": "Tue",
+        "start": "10:00",
+        "end": "15:00",
+        "price": 7.5,
+        "label": "Bargain Climbing",
+        "conditions": [
+          "Pre-book online",
+          "Ages 16+"
+        ],
+        "link": "https://www.citybouldering.co.uk/booking/bargain-climbing---white-city"
+      },
+      {
+        "centre": "White City",
+        "day": "Sun",
+        "start": "17:00",
+        "end": "21:00",
+        "price": 7.5,
+        "label": "Bargain Climbing",
+        "conditions": [
+          "Pre-book online",
+          "Ages 16+"
+        ],
+        "link": "https://www.citybouldering.co.uk/booking/bargain-climbing---white-city"
+      }
+    ]
+  },
+  "lcc": {
+    "name": "London Climbing Centres",
+    "source": "lcc_wordpress",
+    "type": "walk-in",
+    "url": "https://londonclimbingcentres.co.uk/wp-json/wp/v2/pages/4103",
+    "price": 8
+  },
+  "mile-end": {
+    "name": "Mile End Wall",
+    "source": "mileend_html",
+    "type": "walk-in",
+    "url": "https://www.mileendwall.org.uk/index.php/first-visit",
+    "centre": "Mile End",
+    "open_time": null
+  }
+}
