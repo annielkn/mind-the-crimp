@@ -292,10 +292,12 @@ export default function App() {
   }, [near]);
 
   useEffect(() => {
-    // server.py serves api/sessions; a static host (GitHub Pages) only has the committed sessions.json.
+    // server.py serves api/sessions; a static host only has the committed snapshot (deployed as sessions.json).
+    // On GitHub Pages go straight to the snapshot, so there's no failed api/ request in the console.
     const getJSON = (url) => fetch(url).then((r) => (r.ok ? r.json() : Promise.reject(new Error(`${url}: HTTP ${r.status}`))));
-    getJSON(`${BASE}api/sessions`)
-      .catch(() => getJSON(`${BASE}sessions.json`).then((body) => ({ ...body, mode: "snapshot" })))
+    const snapshot = () => getJSON(`${BASE}sessions.json`).then((body) => ({ ...body, mode: "snapshot" }));
+    const onPages = window.location.hostname.endsWith("github.io");
+    (onPages ? snapshot() : getJSON(`${BASE}api/sessions`).catch(snapshot))
       .then((body) => (body.error ? setError(body.error) : setData(body)))
       .catch((e) => setError(String(e)));
   }, []);
