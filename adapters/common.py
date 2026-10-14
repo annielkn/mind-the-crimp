@@ -8,7 +8,8 @@ from zoneinfo import ZoneInfo
 
 import paths
 
-HEADERS = {"User-Agent": "Mozilla/5.0"}
+# Honest User-Agent: says who we are and where to find the project (and its politeness rules).
+HEADERS = {"User-Agent": "MindTheCrimp/1.0 (+https://github.com/annielkn/mind-the-crimp)"}
 BANK_HOLIDAYS_URL = "https://www.gov.uk/bank-holidays.json"
 BANK_HOLIDAYS_MAX_AGE = 7 * 24 * 3600
 
@@ -95,8 +96,26 @@ def throttle(session, host):
     _wait_for(host)
 
 
+# All "today"/"now" logic is Europe/London, never the machine's clock zone (GitHub Actions runs in UTC).
+LONDON = ZoneInfo("Europe/London")
+
+
+def london_now():
+    return datetime.datetime.now(LONDON)
+
+
+def london_date():
+    return london_now().date()
+
+
 def london_today():
-    return datetime.datetime.now(ZoneInfo("Europe/London")).date().isoformat()
+    return london_date().isoformat()
+
+
+def parse_ts(text):
+    """ISO timestamp -> aware datetime; a timestamp without an offset is taken as London time."""
+    ts = datetime.datetime.fromisoformat(text)
+    return ts if ts.tzinfo else ts.replace(tzinfo=LONDON)
 
 
 def _request(method, session, url, **kwargs):

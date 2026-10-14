@@ -15,7 +15,6 @@ SESSIONS = os.path.join(DATA_DIR, "sessions.json")  # last good refresh
 SNAPSHOT_DIR = os.path.join(DATA_DIR, "snapshots")  # newest few good refreshes
 # Committed (not gitignored): public sessions only, so a fresh clone runs offline with no network.
 PUBLIC_SNAPSHOT = os.path.join(DATA_DIR, "public", "sessions.json")
-LEGACY_SNAPSHOT_DIR = os.path.join(ROOT, "data_snapshot")  # imported once if snapshots/ is empty
 WEB_DIST = os.path.join(ROOT, "web", "dist")
 
 

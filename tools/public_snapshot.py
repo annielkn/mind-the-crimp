@@ -6,22 +6,22 @@ Runs only the public adapters against config/chains.json (private adapters and
 config/chains.private.json are ignored), keeps only PUBLIC_FIELDS per session, and refuses to
 write if any adapter failed.
 """
-import datetime
 import json
 import os
 
 import paths
+from adapters.common import london_date, london_now
 from main import HORIZON_DAYS, collect, public_view
 
 
 def main():
     if paths.OFFLINE:
         raise SystemExit("OFFLINE=1 (the default): building the public snapshot needs live requests. Run with OFFLINE=0.")
-    today = datetime.date.today()
+    today = london_date()
     sessions, errors = collect(today, HORIZON_DAYS, public_only=True)
     if errors:
         raise SystemExit(f"Not writing the public snapshot, a chain failed: {'; '.join(errors)}")
-    data = public_view({"refreshed_at": datetime.datetime.now().isoformat(timespec="seconds"),
+    data = public_view({"refreshed_at": london_now().isoformat(timespec="seconds"),
                         "start": today.isoformat(), "days": HORIZON_DAYS, "sessions": sessions})
     os.makedirs(os.path.dirname(paths.PUBLIC_SNAPSHOT), exist_ok=True)
     with open(paths.PUBLIC_SNAPSHOT, "w") as f:

@@ -1,9 +1,9 @@
-import datetime
 import json
 import time
 from http.server import HTTPServer, SimpleHTTPRequestHandler
 
 import paths
+from adapters.common import london_now, london_today, parse_ts
 from main import latest, offline_banner, refresh
 
 PORT = 8000
@@ -15,8 +15,8 @@ _last_attempt = 0.0
 
 
 def is_fresh(data):
-    return bool(data) and data.get("start") == datetime.date.today().isoformat() and (
-        datetime.datetime.now() - datetime.datetime.fromisoformat(data["refreshed_at"])
+    return bool(data) and data.get("start") == london_today() and (
+        london_now() - parse_ts(data["refreshed_at"])
     ).total_seconds() <= REFRESH_SECONDS
 
 

@@ -1,44 +1,9 @@
 {
- "refreshed_at": "2026-10-14T23:11:08",
- "start": "2026-10-14",
+ "refreshed_at": "2026-10-15T00:38:07+01:00",
+ "start": "2026-10-15",
  "days": 28,
  "errors": [],
  "sessions": [
-  {
-   "chain": "Mile End Wall",
-   "centre": "Mile End",
-   "date": "2026-10-14",
-   "start": "07:00",
-   "end": "09:30",
-   "price": 5.0,
-   "price_max": null,
-   "label": "Super off-peak",
-   "type": "walk-in",
-   "link": "https://www.mileendwall.org.uk/index.php/first-visit",
-   "address": "Mile End Climbing Wall, Haverfield Road, London, E3 5BE",
-   "area": "Mile End",
-   "lat": 51.527705,
-   "lng": -0.039672
-  },
-  {
-   "chain": "City Bouldering",
-   "centre": "Stratford",
-   "date": "2026-10-14",
-   "start": "09:00",
-   "end": "15:00",
-   "price": 7.5,
-   "label": "Bargain Climbing",
-   "conditions": [
-    "Pre-book online",
-    "Ages 16+"
-   ],
-   "type": "bookable",
-   "link": "https://www.citybouldering.co.uk/booking/bargain-climbing---stratford-wednesdays",
-   "address": "234 High St, London, E15 2JA",
-   "area": "Stratford",
-   "lat": 51.537245,
-   "lng": -0.003342
-  },
   {
    "chain": "Mile End Wall",
    "centre": "Mile End",
@@ -1355,6 +1320,41 @@
    "area": "White City",
    "lat": 51.510103,
    "lng": -0.221694
+  },
+  {
+   "chain": "Mile End Wall",
+   "centre": "Mile End",
+   "date": "2026-11-11",
+   "start": "07:00",
+   "end": "09:30",
+   "price": 5.0,
+   "price_max": null,
+   "label": "Super off-peak",
+   "type": "walk-in",
+   "link": "https://www.mileendwall.org.uk/index.php/first-visit",
+   "address": "Mile End Climbing Wall, Haverfield Road, London, E3 5BE",
+   "area": "Mile End",
+   "lat": 51.527705,
+   "lng": -0.039672
+  },
+  {
+   "chain": "City Bouldering",
+   "centre": "Stratford",
+   "date": "2026-11-11",
+   "start": "09:00",
+   "end": "15:00",
+   "price": 7.5,
+   "label": "Bargain Climbing",
+   "conditions": [
+    "Pre-book online",
+    "Ages 16+"
+   ],
+   "type": "bookable",
+   "link": "https://www.citybouldering.co.uk/booking/bargain-climbing---stratford-wednesdays",
+   "address": "234 High St, London, E15 2JA",
+   "area": "Stratford",
+   "lat": 51.537245,
+   "lng": -0.003342
   }
  ]
 }

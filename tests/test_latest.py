@@ -24,7 +24,6 @@ def data(monkeypatch, tmp_path):
     monkeypatch.setattr(paths, "DATA_DIR", str(tmp_path))
     monkeypatch.setattr(paths, "SESSIONS", str(p["sessions"]))
     monkeypatch.setattr(paths, "SNAPSHOT_DIR", str(p["snapshots"]))
-    monkeypatch.setattr(paths, "LEGACY_SNAPSHOT_DIR", str(tmp_path / "legacy"))
     monkeypatch.setattr(paths, "PUBLIC_SNAPSHOT", str(p["public"]))
     # The committed snapshot is always the newest, to prove order beats age.
     write(p["public"], "2026-10-14T23:59:00")

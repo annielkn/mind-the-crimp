@@ -2,15 +2,14 @@ import datetime
 import glob
 import json
 import os
-import shutil
 
 import requests
 
 import paths
 from adapters import ADAPTERS, PRIVATE, PUBLIC_ADAPTERS
-from adapters.common import load_state, save_state
+from adapters.common import load_state, london_date, london_now, parse_ts, save_state
 
-# How far ahead to fetch, in days (CLI and web). The web page shows 14 by default and filters client-side.
+# How far ahead to fetch, in days (CLI and web). The web page shows 3 by default and filters client-side.
 HORIZON_DAYS = 28
 
 
@@ -46,7 +45,7 @@ def load_overrides(collected):
             print(f"WARNING: override for {name!r} needs both 'source' and 'verified'")
         else:
             try:
-                age = (datetime.date.today() - datetime.date.fromisoformat(o["verified"])).days
+                age = (london_date() - datetime.date.fromisoformat(o["verified"])).days
                 if age > OVERRIDE_MAX_AGE_DAYS:
                     print(f"WARNING: override for {name!r} was verified {age} days ago ({o['verified']}); re-check it")
             except ValueError:
@@ -143,24 +142,6 @@ def write_json(path, data):
         json.dump(data, f, indent=1)
 
 
-def seed_snapshots():
-    """First run: import the newest data_snapshot/*.json (left untouched), else the current
-    sessions.json, as the first snapshot."""
-    paths.ensure_data_dir()
-    if snapshot_files():
-        return
-    legacy = sorted(glob.glob(os.path.join(paths.LEGACY_SNAPSHOT_DIR, "*.json")), key=os.path.getmtime)
-    source = legacy[-1] if legacy else paths.SESSIONS
-    data = load_json(source, None)
-    if not data or "sessions" not in data:
-        return
-    data.setdefault("refreshed_at", data.get("fetched_at") or datetime.datetime.fromtimestamp(
-        os.path.getmtime(source)).isoformat(timespec="seconds"))
-    name = data["refreshed_at"][:16].replace(":", "-")
-    write_json(os.path.join(paths.SNAPSHOT_DIR, f"{name}.json"), data)
-    print(f"Imported {os.path.relpath(source, paths.ROOT)} as the first snapshot")
-
-
 # Only these session fields go into the committed public snapshot (no availability/capacity).
 PUBLIC_FIELDS = {"chain", "centre", "date", "start", "end", "price", "price_max", "label", "conditions",
                  "type", "link", "address", "area", "lat", "lng"}
@@ -174,14 +155,11 @@ def public_view(data):
 def latest():
     """The last good refresh: local sessions.json, else the newest local snapshot, else the
     committed public snapshot (what a fresh clone uses). None if there's nothing at all."""
-    seed_snapshots()
     data = load_json(paths.SESSIONS, None)
     if not data and snapshot_files():
         data = load_json(snapshot_files()[-1], None)
     if not data:
         data = load_json(paths.PUBLIC_SNAPSHOT, None)
-    if data:
-        data.setdefault("refreshed_at", data.get("fetched_at"))
     return data
 
 
@@ -197,19 +175,19 @@ def save_good(data):
 def refresh(days=HORIZON_DAYS):
     """Live refresh. Only a fully successful run (every adapter worked) replaces sessions.json
     and adds a snapshot; otherwise returns None and the last good data stays."""
-    today = datetime.date.today()
+    today = london_date()
     sessions, errors = collect(today, days)
     if errors:
         print(f"Refresh incomplete, keeping last good data: {'; '.join(errors)}")
         return None
-    data = {"refreshed_at": datetime.datetime.now().isoformat(timespec="seconds"),
+    data = {"refreshed_at": london_now().isoformat(timespec="seconds"),
             "start": today.isoformat(), "days": days, "sessions": sessions, "errors": []}
     save_good(data)
     return data
 
 
 def age_days(data):
-    return (datetime.datetime.now() - datetime.datetime.fromisoformat(data["refreshed_at"])).days
+    return (london_now() - parse_ts(data["refreshed_at"])).days
 
 
 def offline_banner(data):

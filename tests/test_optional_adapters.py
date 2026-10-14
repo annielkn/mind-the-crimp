@@ -20,7 +20,6 @@ SCRIPT = textwrap.dedent("""
     paths.STATE = os.path.join(tmp, "state.json")
     paths.SESSIONS = os.path.join(tmp, "sessions.json")
     paths.SNAPSHOT_DIR = os.path.join(tmp, "snapshots")
-    paths.LEGACY_SNAPSHOT_DIR = os.path.join(tmp, "legacy")
     import adapters, main, server
     assert adapters.PRIVATE == [], adapters.PRIVATE
     assert set(adapters.ADAPTERS) == set(adapters.PUBLIC_ADAPTERS), adapters.ADAPTERS
