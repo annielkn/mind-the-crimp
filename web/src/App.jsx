@@ -439,12 +439,6 @@ export default function App() {
           ))}
         </section>
       ))}
-      <footer className="site-footer">
-        <nav aria-label="Site">
-          <a href="./" aria-current="page">Home</a>
-          <a href="./about.html">About</a>
-        </nav>
-      </footer>
     </main>
   );
 }
